@@ -18,12 +18,18 @@ const db = new pg.Client({
   });
   db.connect();
 
-  app.use(cors());
+  app.use(cors({ origin: '*' }));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(express.static("public"));
 
 
   app.post("/current_weather", async (req, res) => {
+
+
+    // console.log("Received POST request:", req.body);
+
+    // const { latitude, longitude } = req.body;
+    // console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
 
     console.log(req.body);
 
@@ -38,6 +44,10 @@ const db = new pg.Client({
     console.log(result);
 
     res.send(result);
+  });
+
+  app.get('/test', (req, res) => {
+    res.json({ message: 'Backend is working!' });
   });
 
   // app.get("/", async (req, res) => {
