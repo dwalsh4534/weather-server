@@ -23,7 +23,7 @@ const db = new pg.Client({
   app.use(express.static("public"));
 
 
-  app.post("/current_weather", async (req, res) => {
+  app.post("/coordinates_weather", async (req, res) => {
 
 
     // console.log("Received POST request:", req.body);
